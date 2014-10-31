@@ -10,11 +10,9 @@
 				<div id="outerBox">
 					<div id="box1">
 						
-					</div>
-					<div id="box2">
+					</div><div id="box2">
 						
-					</div>
-					<div id="box3">
+					</div><div id="box3">
 						
 					</div>
 				</div>
