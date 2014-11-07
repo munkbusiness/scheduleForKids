@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<title>Visual Representation</title>
-		<link href="style/mainStyle.css" rel="stylesheet" type="text/css">
+		<link href="style/mainStyle.php" rel="stylesheet" type="text/css">
 	</head>
 	<body>
 		<div id="wrapper">

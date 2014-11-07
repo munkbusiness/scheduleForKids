@@ -1,3 +1,12 @@
+<?php
+    header("Content-type: text/css; charset: UTF-8");
+
+   $boxColor = "#E8E8E8";
+   $boxHeight = "700px";
+   $imgPath = "";
+   
+?>
+
 * {
 	margin: 0;
     padding: 0;
@@ -23,7 +32,7 @@ div#frame {
 	overflow: hidden;
 	border: 2px solid black;
 	width: 100%;
-	height: 700px;
+	height: <?php echo $boxHeight; ?>
 	border-radius: 8px;
 }
 
@@ -43,41 +52,41 @@ div#outerBox > div { /* Targets all divs one level inside outerBox */
 }
 
 div#box1 {
-	background: #E8E8E8;
+	background: <?php echo $boxColor; ?>;
 	width: 400px;
-	height: 700px;
+	height: <?php echo $boxHeight; ?>;
 	background-image: url('../images/books-icon.png');
 	background-repeat: no-repeat;
     background-position: center; 
 }
 
 div#box2 {
-	background: #E8E8E8;
+	background: <?php echo $boxColor; ?>;
 	width: 400px;
-	height: 700px;
+	height: <?php echo $boxHeight; ?>;
 	background-image: url('../images/math-icon.png');
 	background-repeat: no-repeat;
     background-position: center; 
 }
 
 div#box3 {
-	background: #E8E8E8;
+	background: <?php echo $boxColor; ?>;
 	width: 400px;
-	height: 700px;
+	height: <?php echo $boxHeight; ?>;
 	border-right: 1px solid black;
 	border-left: 1px solid black;
 }
 
 div#box4 {
-	background: #E8E8E8;
+	background: <?php echo $boxColor; ?>;
 	width: 200px;
-	height: 700px;
+	height: <?php echo $boxHeight; ?>;
 }
 
 div#box5 {
-	background: #E8E8E8;
+	background: <?php echo $boxColor; ?>;
 	width: 600px;
-	height: 700px;
+	height: <?php echo $boxHeight; ?>;
 }
 
 
