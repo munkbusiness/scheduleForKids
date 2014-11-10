@@ -2,8 +2,25 @@
     header("Content-type: text/css; charset: UTF-8");
 
    $boxColor = "#E8E8E8";
-   $boxHeight = "700px";
+   $boxHeight = "300px";
    $imgPath = "";
+   
+   $dayLenghtHours = 6;
+   $dayLenghtMin = $dayLenghtHours*60;
+   $frameLenght = 1800;
+   $pixelPerMin = $frameLenght/(2*60); //probs 15
+   $totalTime = 3;
+   
+   $startingTime = "8:00";
+   $startingHour = 8;
+   $startingMin = 0;
+   
+   // G = hours with without leading zeros, H = with zeroes, i = minuttes with zeroes
+   $currentTime = date("G:i"); //fx 10:23
+   $currentHour = idate("H");
+   $currentMin = idate("i");
+   
+   
    
 ?>
 
@@ -17,13 +34,17 @@ body {
 	padding-top: 0px;
 }
 
+div#wrapper::after { 
+    content: "<?php echo "Current time: ".$currentTime; ?>";
+}
+
 div#wrapper {
 	position: relative;
 	top: 50px;
 	left: 0px;
 	margin-right: auto;
 	margin-left: auto;
-	width: 1800px;
+	width: <?php echo $frameLenght; ?>px;
 	white-space: nowrap;
 	
 }
@@ -32,18 +53,26 @@ div#frame {
 	overflow: hidden;
 	border: 2px solid black;
 	width: 100%;
-	height: <?php echo $boxHeight; ?>
+	height: <?php echo $boxHeight; ?>;
 	border-radius: 8px;
 }
 
 div#outerBox {
 	position: relative;
-    animation: mymove 200s 1;
-    -webkit-animation: mymove 200s 1;  /* Chrome, Safari, Opera */
-    animation-fill-mode: forwards;
-    -webkit-animation-fill-mode: forwards; /* Chrome, Safari, Opera */
-	animation-timing-function: linear;
-	-webkit-animation-timing-function: linear;
+	
+	<?php
+	$predefined_animation = "animation: mymove 200s 1;";
+	$predefined_animationFillMode = "animation-fill-mode: forwards;";
+	$predefined_animationTimingFunction = "animation-timing-function: linear;";
+	
+	?>
+	
+	<?php echo $predefined_animation."\n"; ?>
+	<?php echo "-webkit-".$predefined_animation."\n"; ?>
+	<?php echo $predefined_animationFillMode."\n"; ?>
+	<?php echo "-webkit-".$predefined_animationFillMode."\n"; ?>
+	<?php echo $predefined_animationFillMode."\n"; ?>
+	<?php echo "-webkit-".$predefined_animationFillMode."\n"; ?>
 }
 
 div#outerBox > div { /* Targets all divs one level inside outerBox */
@@ -73,8 +102,8 @@ div#box3 {
 	background: <?php echo $boxColor; ?>;
 	width: 400px;
 	height: <?php echo $boxHeight; ?>;
-	border-right: 1px solid black;
-	border-left: 1px solid black;
+	border-right: 2px solid black;
+	border-left: 2px solid black;
 }
 
 div#box4 {
@@ -97,6 +126,13 @@ img#seperator {
 	left: 200px;
 	z-index:1;
 }
+
+<?php
+	$pixelsToMoveHours = $startingHour - idate("H");
+	$pixelsToMoveMins = $startingMin;
+
+?>
+
 
 /* Chrome, Safari, Opera */
 @-webkit-keyframes mymove {
