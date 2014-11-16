@@ -18,10 +18,7 @@
    // G = hours with without leading zeros, H = with zeroes, i = minuttes with zeroes
    $currentTime = date("G:i"); //fx 10:23
    $currentHour = idate("H");
-   $currentMin = idate("i");
-   
-   
-   
+   $currentMin = idate("i"); 
 ?>
 
 * {
@@ -34,8 +31,12 @@ body {
 	padding-top: 0px;
 }
 
+.clock {
+	
+}
+
 div#wrapper::after { 
-    content: "<?php echo "Current time: ".$currentTime; ?>";
+    /*content: "<?php echo "Current time: ".$currentTime; ?>";*/
 }
 
 div#wrapper {
@@ -46,7 +47,6 @@ div#wrapper {
 	margin-left: auto;
 	width: <?php echo $frameLenght; ?>px;
 	white-space: nowrap;
-	
 }
 
 div#frame {
@@ -80,49 +80,46 @@ div#outerBox > div { /* Targets all divs one level inside outerBox */
 	display: inline-block;
 }
 
-div#box1 {
+div#box45 {
 	background: <?php echo $boxColor; ?>;
-	width: 400px;
+	width: 450px;
 	height: <?php echo $boxHeight; ?>;
-	background-image: url('../images/books-icon.png');
 	background-repeat: no-repeat;
     background-position: center; 
 }
 
-div#box2 {
-	background: <?php echo $boxColor; ?>;
-	width: 400px;
-	height: <?php echo $boxHeight; ?>;
-	background-image: url('../images/math-icon.png');
-	background-repeat: no-repeat;
-    background-position: center; 
-}
-
-div#box3 {
-	background: <?php echo $boxColor; ?>;
-	width: 400px;
-	height: <?php echo $boxHeight; ?>;
-	border-right: 2px solid black;
-	border-left: 2px solid black;
-}
-
-div#box4 {
-	background: <?php echo $boxColor; ?>;
-	width: 200px;
-	height: <?php echo $boxHeight; ?>;
-}
-
-div#box5 {
+div#box60 {
 	background: <?php echo $boxColor; ?>;
 	width: 600px;
 	height: <?php echo $boxHeight; ?>;
+	background-repeat: no-repeat;
+    background-position: center; 
 }
 
+div#box20 {
+	background: <?php echo $boxColor; ?>;
+	width: 200px;
+	height: <?php echo $boxHeight; ?>;
+	border-right: 2px solid #363636;
+	border-left: 2px solid #363636;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+div#box45pause {
+	background: <?php echo $boxColor; ?>;
+	width: 450px;
+	height: <?php echo $boxHeight; ?>;
+    border-right: 2px solid #363636;
+	border-left: 2px solid #363636;
+    background-repeat: no-repeat;
+    background-position: center;
+}
 
 
 img#seperator {
 	position:absolute;
-	top: -7px;
+	top: 0px;
 	left: 200px;
 	z-index:1;
 }
