@@ -11,14 +11,38 @@
    $pixelPerMin = $frameLenght/(2*60); //probs 15
    $totalTime = 3;
    
+   $totalMin = 530;
+   $totalSec = $totalMin*60;
+   $totalPixels = $totalMin*15;
+   
    $startingTime = "8:00";
-   $startingHour = 8;
+   $startingHour = 11;
    $startingMin = 0;
    
    // G = hours with without leading zeros, H = with zeroes, i = minuttes with zeroes
    $currentTime = date("G:i"); //fx 10:23
    $currentHour = idate("H");
    $currentMin = idate("i"); 
+   
+   //Calculates the current starting pixel position
+   if(idate("H") >= $startingHour) {
+		$pixelsToMoveHours = idate("H") - $startingHour;
+	}
+	else {
+		$pixelsToMoveHours = 0;
+	}
+	if(idate("i") >= $startingMin) {
+		$pixelsToMoveMins = idate("i") - $startingMin + $pixelsToMoveHours*60;
+	}
+	else {
+		$pixelsToMoveMins = $pixelsToMoveHours*60;
+	}
+	$pixelsToMoveSecs = $pixelsToMoveMins*60 + idate("s") + 14;
+	$pixelsToMove = $pixelsToMoveMins*15; //$pixelPerMin
+	
+	$animationSecs = $totalSec-$pixelsToMoveSecs;
+   
+   
 ?>
 
 * {
@@ -61,7 +85,7 @@ div#outerBox {
 	position: relative;
 	
 	<?php
-	$predefined_animation = "animation: mymove 200s 1;";
+	$predefined_animation = "animation: mymove ".$animationSecs."s 1;";
 	$predefined_animationFillMode = "animation-fill-mode: forwards;";
 	$predefined_animationTimingFunction = "animation-timing-function: linear;";
 	
@@ -72,48 +96,40 @@ div#outerBox {
 	<?php echo $predefined_animationFillMode."\n"; ?>
 	<?php echo "-webkit-".$predefined_animationFillMode."\n"; ?>
 	<?php echo $predefined_animationFillMode."\n"; ?>
-	<?php echo "-webkit-".$predefined_animationFillMode."\n"; ?>
+	<?php echo "-webkit-".$predefined_animationTimingFunction."\n"; ?>
 }
 
 div#outerBox > div { /* Targets all divs one level inside outerBox */
 	/* border: 1px solid black; */
 	display: inline-block;
-}
-
-div#box45 {
+	box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
 	background: <?php echo $boxColor; ?>;
-	width: 450px;
 	height: <?php echo $boxHeight; ?>;
 	background-repeat: no-repeat;
-    background-position: center; 
+    background-position: center;
 }
 
-div#box60 {
-	background: <?php echo $boxColor; ?>;
-	width: 600px;
-	height: <?php echo $boxHeight; ?>;
-	background-repeat: no-repeat;
-    background-position: center; 
+div.min20 {
+	width: 300px;
 }
 
-div#box20 {
-	background: <?php echo $boxColor; ?>;
-	width: 200px;
-	height: <?php echo $boxHeight; ?>;
+div.min45 {
+	width: 675px;
+}
+
+div.min60 {
+	width: 900px;
+}
+
+div.pause {
 	border-right: 2px solid #363636;
 	border-left: 2px solid #363636;
-    background-repeat: no-repeat;
-    background-position: center;
 }
 
-div#box45pause {
-	background: <?php echo $boxColor; ?>;
-	width: 450px;
-	height: <?php echo $boxHeight; ?>;
-    border-right: 2px solid #363636;
-	border-left: 2px solid #363636;
-    background-repeat: no-repeat;
-    background-position: center;
+div.freedom {
+	width: 2700px;
 }
 
 
@@ -124,20 +140,14 @@ img#seperator {
 	z-index:1;
 }
 
-<?php
-	$pixelsToMoveHours = $startingHour - idate("H");
-	$pixelsToMoveMins = $startingMin;
-
-?>
-
 
 /* Chrome, Safari, Opera */
 @-webkit-keyframes mymove {
-    from {right: -208px;}
-    to {right: 1800px;} /* Lengt of animation in pixels */
+    from {right: <?php echo -208+$pixelsToMove; ?>px;}
+    to {right: <?php echo $totalPixels; ?>px;} /* Lengt of animation in pixels */
 }
 
 @keyframes mymove {
-    from {right: -208px;}
-    to {right: 1800px;} /* Lenght of animation in pixels */
+    from {right: <?php echo -208+$pixelsToMove; ?>px;}
+    to {right: <?php echo $totalPixels; ?>px;} /* Lenght of animation in pixels */
 }
