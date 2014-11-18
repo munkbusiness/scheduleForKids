@@ -30,24 +30,25 @@
 		$pixelsToMoveHours = idate("H") - $startingHour;
 	}
 	else {
-		$pixelsToMoveHours = 0;
+		$pixelsToMoveHours = idate("H") - $startingHour;
 	}
 	if(idate("i") >= $startingMin) {
 		$pixelsToMoveMins = idate("i") - $startingMin + $pixelsToMoveHours*60;
 	}
 	else {
-		$pixelsToMoveMins = $pixelsToMoveHours*60;
+		$pixelsToMoveMins = -60 + idate("i") - $startingMin + $pixelsToMoveHours*60;
 	}
 	if(idate("s") >= $startingSec) {
 		$pixelsToMoveSecs = idate("s") - $startingSec + $pixelsToMoveMins*60;
 	}
 	else {
-		$pixelsToMoveSecs = $pixelsToMoveMins*60;
+		$pixelsToMoveSecs = -60 + idate("s") - $startingSec + $pixelsToMoveMins*60;
 	}
 	$pixelsToMoveSecs = $pixelsToMoveMins*60 + idate("s") + 14;
 	$pixelsToMove = ceil($pixelsToMoveSecs/4); //every 4th second it should move one pixel
 	
 	$animationSecs = $totalSec-$pixelsToMoveSecs;
+	
    
    
 ?>
@@ -123,6 +124,7 @@ div#frame {
 
 div#outerBox {
 	position: relative;
+	background-color: #eef2cc;
 	
 	<?php
 	$predefined_animation = "animation: mymove ".$animationSecs."s 1;";
@@ -154,6 +156,8 @@ div#outerBox > div { /* Targets all divs one level inside outerBox */
 
 /* Clock blocks for each class */
 div#outerBox > div > span {
+	position: relative;
+	
 	padding-left: 10px;
 	padding-right: 10px;
 	background-color: #2E2E2E;
@@ -187,6 +191,7 @@ div.pause {
 
 div.freedom {
 	width: 2700px;
+	background-position: left !important;
 }
 
 
