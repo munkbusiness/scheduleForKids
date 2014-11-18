@@ -44,7 +44,7 @@
 	else {
 		$pixelsToMoveSecs = $pixelsToMoveMins*60;
 	}
-	$pixelsToMoveSecs = $pixelsToMoveMins*60 + idate("s");
+	$pixelsToMoveSecs = $pixelsToMoveMins*60 + idate("s") + 14;
 	$pixelsToMove = ceil($pixelsToMoveSecs/4); //every 4th second it should move one pixel
 	
 	$animationSecs = $totalSec-$pixelsToMoveSecs;
@@ -196,11 +196,11 @@ img#seperator {
 
 /* Chrome, Safari, Opera */
 @-webkit-keyframes mymove {
-    from {right: <?php echo -208+$pixelsToMove; ?>px;}
+    from {right: <?php echo -200+$pixelsToMove; ?>px;}
     to {right: <?php echo $totalPixels; ?>px;} /* Lengt of animation in pixels */
 }
 
 @keyframes mymove {
-    from {right: <?php echo -208+$pixelsToMove; ?>px;}
+    from {right: <?php echo -200+$pixelsToMove; ?>px;}
     to {right: <?php echo $totalPixels; ?>px;} /* Lenght of animation in pixels */
 }
