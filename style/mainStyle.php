@@ -150,6 +150,20 @@ div#outerBox > div { /* Targets all divs one level inside outerBox */
     background-position: center;
 }
 
+div#outerBox > div > span {
+	padding-left: 8px;
+	padding-right: 8px;
+	background-color: #262626;
+	
+	line-height: 30px;
+	font-family: robotoFont;
+	font-weight: bold;
+	font-size:30px;
+	color: white;
+	text-align: center;
+	
+}
+
 div.min20 {
 	width: 300px;
 }
