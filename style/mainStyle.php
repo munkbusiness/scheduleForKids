@@ -16,7 +16,7 @@
    $totalPixels = $totalMin*15;
    
    $startingTime = "8:00";
-   $startingHour = 15;
+   $startingHour = 8;
    $startingMin = 0;
    $startingSec = 0;
    
@@ -73,7 +73,7 @@ body {
 	border-left: 15px solid transparent;
 	border-right: 15px solid transparent;
 	
-	border-bottom: 20px solid #262626;
+	border-bottom: 20px solid #2E2E2E;
 	
 	position:absolute;
 	top: 384px;
@@ -85,17 +85,18 @@ div#date_time {
 	position:absolute;
 	top: 404px;
 	left: 50px;
-	z-index:1;
+	z-index: 1;
 	width: 300px;
 	height: 150px;
-	background: #262626;
+	background: #2E2E2E;
 	
 	line-height: 150px;
 	font-family: robotoFont;
 	font-weight: bold;
-	font-size:120px;
+	font-size: 120px;
 	color: white;
 	text-align: center;
+	text-shadow: 4px 4px 10px #000;
 }
 
 div#wrapper::after { 
@@ -148,19 +149,22 @@ div#outerBox > div { /* Targets all divs one level inside outerBox */
 	height: <?php echo $boxHeight; ?>;
 	background-repeat: no-repeat;
     background-position: center;
+
 }
 
+/* Clock blocks for each class */
 div#outerBox > div > span {
-	padding-left: 8px;
-	padding-right: 8px;
-	background-color: #262626;
+	padding-left: 10px;
+	padding-right: 10px;
+	background-color: #2E2E2E;
 	
-	line-height: 30px;
+	line-height: 50px;
 	font-family: robotoFont;
 	font-weight: bold;
-	font-size:30px;
+	font-size:50px;
 	color: white;
 	text-align: center;
+	text-shadow: 2px 2px 5px #000;
 	
 }
 
