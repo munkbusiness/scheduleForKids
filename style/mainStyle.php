@@ -16,8 +16,8 @@
    $totalPixels = $totalMin*15;
    
    $startingTime = "8:00";
-   $startingHour = 11;
-   $startingMin = 0;
+   $startingHour = 15;
+   $startingMin = 20;
    
    // G = hours with without leading zeros, H = with zeroes, i = minuttes with zeroes
    $currentTime = date("G:i"); //fx 10:23
