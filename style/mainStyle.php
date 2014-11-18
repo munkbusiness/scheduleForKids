@@ -17,7 +17,7 @@
    
    $startingTime = "8:00";
    $startingHour = 15;
-   $startingMin = 30;
+   $startingMin = 0;
    $startingSec = 0;
    
    // G = hours with without leading zeros, H = with zeroes, i = minuttes with zeroes
@@ -52,6 +52,11 @@
    
 ?>
 
+@font-face {
+    font-family: robotoFont;
+    src: url(Roboto-Condensed.ttf);
+}
+
 * {
 	margin: 0;
     padding: 0;
@@ -68,7 +73,7 @@ body {
 	border-left: 15px solid transparent;
 	border-right: 15px solid transparent;
 	
-	border-bottom: 20px solid black;
+	border-bottom: 20px solid #262626;
 	
 	position:absolute;
 	top: 384px;
@@ -79,8 +84,18 @@ body {
 div#date_time {
 	position:absolute;
 	top: 404px;
-	left: 200px;
+	left: 50px;
 	z-index:1;
+	width: 300px;
+	height: 150px;
+	background: #262626;
+	
+	line-height: 150px;
+	font-family: robotoFont;
+	font-weight: bold;
+	font-size:120px;
+	color: white;
+	text-align: center;
 }
 
 div#wrapper::after { 
