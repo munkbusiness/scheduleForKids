@@ -14,23 +14,23 @@
             	<script type="text/javascript">window.onload = date_time('date_time');</script>
 				<div id="outerBox">
 					
-					<div class="min45" style="background-color: #eef2cc; background-image: url(images/matematik.png); background-size: 450px;">
+					<div class="min45" style="background-color: #eef2cc; background-image: url(images/matematikpicture.png);">
 						<span>8:00</span>
-					</div><div class="min45" style="background-color: #eef2cc; background-image: url(images/matematik2.png); background-size: 450px;">
+					</div><div class="min45" style="background-color: #eef2cc; background-image: url(images/matematik2picture.png);">
 						<span>8:45</span>
-					</div><div class="min20 pause" style="background-color: #b9d7ee; background-image:url(images/ipadfun.png); background-size: 280px;">
+					</div><div class="min20 pause" style="background-color: #b9d7ee; background-image:url(images/pause2picture.png);">
 						<span>9:30</span>
-					</div><div class="min60" style="background-color: #fdece6; background-image: url(images/dansk.png); background-size: 550px;">
+					</div><div class="min60" style="background-color: #fdece6; background-image: url(images/danskpicture.png);">
 						<span>9:50</span>
-					</div><div class="min45" style="background-color: #fdece6; background-image: url(images/dansk2.png); background-size: 550px;">
+					</div><div class="min45" style="background-color: #fdece6; background-image: url(images/dansk2picture.png);">
 						<span>10:50</span>
-					</div><div class="min45 pause" style="background-color: #e1f0e3; background-image: url(images/pause.png); background-size: 450px;">
+					</div><div class="min45 pause" style="background-color: #e1f0e3; background-image: url(images/pausepicture.png);">
 						<span>11:35</span>
-					</div><div class="min45" style="background-color: #b9d7ee; background-image:url(images/kristendom.png); background-size: 450px;">
+					</div><div class="min45" style="background-color: #b9d7ee; background-image:url(images/kristendompicture.png);">
 						<span>12:20</span>
-					</div><div class="min45" style="background-color: #fdece6; background-image: url(images/dansk3.png); background-size: 550px;">
+					</div><div class="min45" style="background-color: #fdece6; background-image: url(images/dansk3picture.png);">
 						<span>13:05</span>
-					</div><div class="freedom pause" style="background-color: #e1f0e3; background-image:url(images/home.png) background-size: 400px;">
+					</div><div class="freedom pause" style="background-color: #e1f0e3; background-image:url(images/home.png)">
 						<span>14:00</span>
 					</div>
                     
