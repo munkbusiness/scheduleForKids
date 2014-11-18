@@ -17,7 +17,8 @@
    
    $startingTime = "8:00";
    $startingHour = 15;
-   $startingMin = 20;
+   $startingMin = 30;
+   $startingSec = 0;
    
    // G = hours with without leading zeros, H = with zeroes, i = minuttes with zeroes
    $currentTime = date("G:i"); //fx 10:23
@@ -37,8 +38,14 @@
 	else {
 		$pixelsToMoveMins = $pixelsToMoveHours*60;
 	}
-	$pixelsToMoveSecs = $pixelsToMoveMins*60 + idate("s") + 14;
-	$pixelsToMove = $pixelsToMoveMins*15; //$pixelPerMin
+	if(idate("s") >= $startingSec) {
+		$pixelsToMoveSecs = idate("s") - $startingSec + $pixelsToMoveMins*60;
+	}
+	else {
+		$pixelsToMoveSecs = $pixelsToMoveMins*60;
+	}
+	$pixelsToMoveSecs = $pixelsToMoveMins*60 + idate("s");
+	$pixelsToMove = ceil($pixelsToMoveSecs/4); //every 4th second it should move one pixel
 	
 	$animationSecs = $totalSec-$pixelsToMoveSecs;
    
@@ -55,8 +62,25 @@ body {
 	padding-top: 0px;
 }
 
-.clock {
+.arrow-up {
+	width: 0; 
+	height: 0; 
+	border-left: 15px solid transparent;
+	border-right: 15px solid transparent;
 	
+	border-bottom: 20px solid black;
+	
+	position:absolute;
+	top: 384px;
+	left: 186px;
+	z-index:1;
+}
+
+div#date_time {
+	position:absolute;
+	top: 404px;
+	left: 200px;
+	z-index:1;
 }
 
 div#wrapper::after { 
