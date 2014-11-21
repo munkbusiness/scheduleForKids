@@ -1,6 +1,10 @@
 <?php
     header("Content-type: text/css; charset: UTF-8");
-
+	
+	function __autoload($class_name) {
+    include "../classes/".$class_name . '.php';
+	}
+	
    $boxColor = "#E8E8E8";
    $boxHeight = "400px";
    $imgPath = "";
@@ -88,7 +92,10 @@ div#date_time {
 div#wrapper::after {
 	position:relative;
 	top: 200px;
-    content: "<?php echo "Current factor: ". $animationSecs/($totalPixels-(-200+$pixelsToMove)); ?>";
+    content: "<?php 
+    $lesson1 = new Lesson(45,"matematik","vinkler, plus, minus");
+    
+    echo "Current sec/pixel factor: ". $animationSecs/($totalPixels-(-200+$pixelsToMove))." ".$lesson1->getPixelLength(); ?>";
 }
 
 div#wrapper {

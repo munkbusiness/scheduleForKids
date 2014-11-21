@@ -31,7 +31,7 @@
 					</div><div class="min45" style="background-color: #fdece6; background-image: url(images/dansk3picture.png);">
 						<span>13:05</span>
 					</div><div class="freedom pause" style="background-color: #e1f0e3; background-image:url(images/home.png)">
-						<span>14:00</span>
+						<span>13:50</span>
 					</div>
                     
 				</div>
