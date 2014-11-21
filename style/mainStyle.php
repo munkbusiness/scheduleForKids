@@ -24,30 +24,15 @@
    $currentTime = date("G:i"); //fx 10:23
    $currentHour = idate("H");
    $currentMin = idate("i"); 
+   $currentSec = idate("s");
    
    //Calculates the current starting pixel position
-   if(idate("H") >= $startingHour) {
-		$pixelsToMoveHours = idate("H") - $startingHour;
-	}
-	else {
-		$pixelsToMoveHours = idate("H") - $startingHour;
-	}
-	if(idate("i") >= $startingMin) {
-		$pixelsToMoveMins = idate("i") - $startingMin + $pixelsToMoveHours*60;
-	}
-	else {
-		$pixelsToMoveMins = -60 + idate("i") - $startingMin + $pixelsToMoveHours*60;
-	}
-	if(idate("s") >= $startingSec) {
-		$pixelsToMoveSecs = idate("s") - $startingSec + $pixelsToMoveMins*60;
-	}
-	else {
-		$pixelsToMoveSecs = -60 + idate("s") - $startingSec + $pixelsToMoveMins*60;
-	}
-	$pixelsToMoveSecs = $pixelsToMoveMins*60 + idate("s") + 14;
+	$pixelsToMoveHours = idate("H") - $startingHour;
+	$pixelsToMoveMins = (idate("i") - $startingMin) + ($pixelsToMoveHours*60);
+	$pixelsToMoveSecs = (idate("s") - $startingSec) + ($pixelsToMoveMins*60);
 	$pixelsToMove = ceil($pixelsToMoveSecs/4); //every 4th second it should move one pixel
 	
-	$animationSecs = $totalSec-$pixelsToMoveSecs;
+	$animationSecs = $totalSec-$pixelsToMoveSecs+(200*4); //the 200 is the 200 pixel that it offsets*4 sec pr. pixel
 	
    
    
@@ -100,8 +85,10 @@ div#date_time {
 	text-shadow: 4px 4px 10px #000;
 }
 
-div#wrapper::after { 
-    /*content: "<?php echo "Current time: ".$currentTime; ?>";*/
+div#wrapper::after {
+	position:relative;
+	top: 200px;
+    content: "<?php echo "Current factor: ". $animationSecs/($totalPixels-(-200+$pixelsToMove)); ?>";
 }
 
 div#wrapper {
