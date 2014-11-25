@@ -20,7 +20,7 @@
    $totalPixels = $totalMin*15;
    
    $startingTime = "8:00";
-   $startingHour = 18;
+   $startingHour = 19;
    $startingMin = 0;
    $startingSec = 0;
    
