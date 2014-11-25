@@ -18,7 +18,7 @@
 			header( "refresh:30;url=visualRepresentation.php?page=slow" );
 		}
 		?>
-		<link href="style/mainStyle.php <?php  if($_GET["page"] == "fast") { echo "?page=fast"; } else { echo "?page=slow";} ?>" rel="stylesheet" type="text/css">
+		<link href="style/mainStyle.php<?php  if($_GET["page"] == "fast") { echo "?page=fast"; } else { echo "?page=slow";} ?>" rel="stylesheet" type="text/css">
 		<script type="text/javascript" src="time.js"></script>
 		<script type="text/javascript" src="keypress.js"></script>
 	</head>
