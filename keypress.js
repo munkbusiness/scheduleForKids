@@ -8,4 +8,7 @@ function arrowChecker(e) {
     else if (e.keyCode == '38') { //arrow up
         document.location.href = "http://localhost/scheduleForKids/visualRepresentation.php?page=slow";
     }
+    else if (e.keyCode == '17') { //CTRL
+        document.location.href = "http://localhost/scheduleForKids/timeout.php";
+    }
 }
