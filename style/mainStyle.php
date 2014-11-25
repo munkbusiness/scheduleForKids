@@ -20,7 +20,7 @@
    $totalPixels = $totalMin*15;
    
    $startingTime = "8:00";
-   $startingHour = 8;
+   $startingHour = 9;
    $startingMin = 0;
    $startingSec = 0;
    
@@ -93,7 +93,7 @@ div#wrapper::after {
 	position:relative;
 	top: 200px;
     content: "<?php 
-    $lesson1 = new Lesson(45,"matematik","vinkler, plus, minus");
+    $lesson1 = new Lesson(45,"matematik","vinkler, plus, minus", 1);
     
     echo "Current sec/pixel factor: ". $animationSecs/($totalPixels-(-200+$pixelsToMove))." ".$lesson1->getPixelLength(); ?>";
 }
@@ -166,17 +166,10 @@ div#outerBox > div > span {
 	
 }
 
-div.min20 {
-	width: 300px;
+<?php for ($i=5; $i <= 80; $i+=5) { 
+	echo "div.min{$i} { width: ". $i*15 ."px; }\n";
 }
-
-div.min45 {
-	width: 675px;
-}
-
-div.min60 {
-	width: 900px;
-}
+?>
 
 div.pause {
 	border-right: 2px solid #363636;

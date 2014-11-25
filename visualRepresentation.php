@@ -1,9 +1,18 @@
 <!DOCTYPE HTML>
+<?php
+
+	function __autoload($class_name) {
+    include "classes/".$class_name .".php";
+	}
+	
+?>
+
 <html>
 	<head>
 		<title>Visual Representation</title>
 		<link href="style/mainStyle.php" rel="stylesheet" type="text/css">
 		<script type="text/javascript" src="time.js"></script>
+		<script type="text/javascript" src="keypress.js"></script>
 	</head>
 	<body>
 		<div id="wrapper">
@@ -13,7 +22,36 @@
 				<div id="date_time"></div>
             	<script type="text/javascript">window.onload = date_time('date_time');</script>
 				<div id="outerBox">
+					<?php
+					/*
+					// fetch array of articles with less code
+					$q = "SELECT * FROM lessons ORDER BY position";
+					$a = $db->fetch_all_array($q);
+					if (!empty($a)) {
+					  foreach ($a as $k => $v) {
+					    echo "{$v['classSubject']} has {$v['minuteLenght']}\n";
+					  }
+					}
+					 * 
+					 */
+					// start database connection localhost, username, password, database_name
+					$db = new SimpleDatabaseUtil('localhost', 'root', '', 'ScheduleForKids');
+					// query database
+					$q = "SELECT * FROM lessons ORDER BY position";
+					$r = $db->query($q);
 					
+					$combinedTime = 8*60;
+					// if we have a result loop over the result
+					if ($db->num_rows($r) > 0) {
+					  while ($a = $db->fetch_array_assoc($r)) { ?><div class="min<?php echo $a['minuteLenght'] ?>" style="background-color: #eef2cc; background-image: url(images/matematikpicture.png);">
+						<span><?php echo floor($combinedTime/60) .":". sprintf("%02s", $combinedTime%60); $combinedTime += $a['minuteLenght']; ?></span>
+					</div><?php
+					  }
+					} ?><div class="freedom pause" style="background-color: #e1f0e3; background-image:url(images/home.png)">
+						<span>13:50</span>
+					</div>
+
+					<!--
 					<div class="min45" style="background-color: #eef2cc; background-image: url(images/matematikpicture.png);">
 						<span>8:00</span>
 					</div><div class="min45" style="background-color: #eef2cc; background-image: url(images/matematik2picture.png);">
@@ -33,6 +71,7 @@
 					</div><div class="freedom pause" style="background-color: #e1f0e3; background-image:url(images/home.png)">
 						<span>13:50</span>
 					</div>
+					-->
                     
 				</div>
 			</div>
