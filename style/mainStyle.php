@@ -6,7 +6,7 @@
 	}
 	
    $boxColor = "#E8E8E8";
-   $boxHeight = "400px";
+   $boxHeight = "400";
    $imgPath = "";
    
    $dayLenghtHours = 6;
@@ -20,7 +20,7 @@
    $totalPixels = $totalMin*15;
    
    $startingTime = "8:00";
-   $startingHour = 9;
+   $startingHour = 18;
    $startingMin = 0;
    $startingSec = 0;
    
@@ -54,6 +54,7 @@
 }
 
 body {
+	background-color: #F8F8F8;
 	padding-top: 0px;
 }
 
@@ -66,14 +67,14 @@ body {
 	border-bottom: 20px solid #2E2E2E;
 	
 	position:absolute;
-	top: 384px;
+	top: <?php echo $boxHeight-16; ?>px;
 	left: 186px;
 	z-index:1;
 }
 
 div#date_time {
 	position:absolute;
-	top: 404px;
+	top: <?php echo $boxHeight+4; ?>px;
 	left: 50px;
 	z-index: 1;
 	width: 300px;
@@ -89,6 +90,7 @@ div#date_time {
 	text-shadow: 4px 4px 10px #000;
 }
 
+/*
 div#wrapper::after {
 	position:relative;
 	top: 200px;
@@ -97,10 +99,11 @@ div#wrapper::after {
     
     echo "Current sec/pixel factor: ". $animationSecs/($totalPixels-(-200+$pixelsToMove))." ".$lesson1->getPixelLength(); ?>";
 }
+*/
 
 div#wrapper {
 	position: relative;
-	top: 50px;
+	top: 300px;
 	left: 0px;
 	margin-right: auto;
 	margin-left: auto;
@@ -112,7 +115,7 @@ div#frame {
 	overflow: hidden;
 	border: 2px solid black;
 	width: 100%;
-	height: <?php echo $boxHeight; ?>;
+	height: <?php echo $boxHeight; ?>px;
 	border-radius: 8px;
 }
 
@@ -142,15 +145,14 @@ div#outerBox > div { /* Targets all divs one level inside outerBox */
     -moz-box-sizing:border-box;
     -webkit-box-sizing:border-box;
 	background: <?php echo $boxColor; ?>;
-	height: <?php echo $boxHeight; ?>;
+	height: <?php echo $boxHeight; ?>px;
 	background-repeat: no-repeat;
     background-position: center;
 
 }
 
 /* Clock blocks for each class */
-div#outerBox > div > span {
-	position: relative;
+.scheduleClock {
 	
 	padding-left: 10px;
 	padding-right: 10px;
@@ -164,6 +166,60 @@ div#outerBox > div > span {
 	text-align: center;
 	text-shadow: 2px 2px 5px #000;
 	
+}
+
+.keywords {
+	position: relative;
+	float:right;
+	top: 200px;
+	width: 100%;
+	padding-left: 10px;
+	padding-right: 10px;
+	
+    display: inline-block;
+	
+	line-height: 100px;
+	font-family: robotoFont;
+	font-weight: bold;
+	font-size: 100px;
+	color: white;
+	text-align: center;
+	text-shadow: -3px 1px black, 1px 3px black, 3px 1px black, 1px -3px black;
+	/**text-shadow: 2px 2px 5px #000;**/
+	
+}
+
+.textbox {
+	font-family: robotoFont;
+	font-weight: bold;
+	font-size: 100px;
+	
+	vertical-align: top;
+	text-align: center;
+	position: relative;
+	top: 320px;
+	float: right;
+	width: 100%;
+	height: 120px;
+	display: inline-block;
+	outline: none;
+    background: transparent;
+}
+
+.newTopicTextbox {
+	color: #202020;
+	margin: 10px;
+	position:absolute;
+	top: <?php echo $boxHeight+15; ?>px;
+	left: 350px;
+	z-index: 1;
+	width: 1100px;
+}
+
+input.newTopicTextbox:hover {
+	border-radius: 4px;
+	border: 2px solid #999;
+    border-radius: 5px;
 }
 
 <?php for ($i=5; $i <= 80; $i+=5) { 
@@ -183,12 +239,35 @@ div.freedom {
 
 
 img#seperator {
+	height: <?php echo $boxHeight; ?>px;
 	position:absolute;
 	top: 0px;
 	left: 200px;
 	z-index:1;
 }
 
+
+<?php if($_GET["page"] == "fast") { ?>
+	
+div#outerBox {
+	<?php
+	$predefined_animation = "animation: mymove 40s 1;";
+	$predefined_animationFillMode = "animation-fill-mode: forwards;";
+	$predefined_animationTimingFunction = "animation-timing-function: linear;";
+	
+	?>
+	
+	<?php echo $predefined_animation."\n"; ?>
+	<?php echo "-webkit-".$predefined_animation."\n"; ?>
+	<?php echo $predefined_animationFillMode."\n"; ?>
+	<?php echo "-webkit-".$predefined_animationFillMode."\n"; ?>
+	<?php echo $predefined_animationFillMode."\n"; ?>
+	<?php echo "-webkit-".$predefined_animationTimingFunction."\n"; ?>
+	
+}
+
+
+<?php } ?>
 
 /* Chrome, Safari, Opera */
 @-webkit-keyframes mymove {
@@ -200,3 +279,4 @@ img#seperator {
     from {right: <?php echo -200+$pixelsToMove; ?>px;}
     to {right: <?php echo $totalPixels; ?>px;} /* Lenght of animation in pixels */
 }
+

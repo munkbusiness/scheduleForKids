@@ -10,7 +10,12 @@
 <html>
 	<head>
 		<title>Visual Representation</title>
-		<link href="style/mainStyle.php" rel="stylesheet" type="text/css">
+		<?php 
+		if (empty($_GET['page'])) { 
+    		$_GET['page']='slow'; 
+		}
+		?>
+		<link href="style/mainStyle.php <?php  if($_GET["page"] == "fast") { echo "?page=fast"; } else { echo "?page=slow";} ?>" rel="stylesheet" type="text/css">
 		<script type="text/javascript" src="time.js"></script>
 		<script type="text/javascript" src="keypress.js"></script>
 	</head>
@@ -21,6 +26,7 @@
 				<div class="arrow-up"></div>
 				<div id="date_time"></div>
             	<script type="text/javascript">window.onload = date_time('date_time');</script>
+            	<input type="text" class="textbox newTopicTextbox" />
 				<div id="outerBox">
 					<?php
 					/*
@@ -40,15 +46,16 @@
 					$q = "SELECT * FROM lessons ORDER BY position";
 					$r = $db->query($q);
 					
-					$combinedTime = 8*60;
+					$combinedTime = 8*60; //starting time
 					// if we have a result loop over the result
 					if ($db->num_rows($r) > 0) {
-					  while ($a = $db->fetch_array_assoc($r)) { ?><div class="min<?php echo $a['minuteLenght'] ?>" style="background-color: #eef2cc; background-image: url(images/matematikpicture.png);">
-						<span><?php echo floor($combinedTime/60) .":". sprintf("%02s", $combinedTime%60); $combinedTime += $a['minuteLenght']; ?></span>
+					  while ($a = $db->fetch_array_assoc($r)) { ?><div class="min<?php echo $a['minuteLenght']; ?>" style="background-color: <?php echo $a['bgcolor']; ?>; background-image: url(images/<?php echo $a['picture']; ?>.png);">
+						<span class="scheduleClock"><?php echo floor($combinedTime/60) .":". sprintf("%02s", $combinedTime%60); $combinedTime += $a['minuteLenght']; ?></span>
+						<!--<input type="text" class="textbox" /> -->
 					</div><?php
 					  }
 					} ?><div class="freedom pause" style="background-color: #e1f0e3; background-image:url(images/home.png)">
-						<span>13:50</span>
+						<span class="scheduleClock">13:50</span>
 					</div>
 
 					<!--
@@ -71,6 +78,10 @@
 					</div><div class="freedom pause" style="background-color: #e1f0e3; background-image:url(images/home.png)">
 						<span>13:50</span>
 					</div>
+					
+					// Kode for keywords fra DB
+					<?php if(!empty($a['keywords'])) { ?><div class="keywords"><?php echo $a['keywords'] ?></div><?php } else { ?><div class="keywords"> </div><?php } ?>
+					
 					-->
                     
 				</div>

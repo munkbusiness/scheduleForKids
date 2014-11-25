@@ -2,13 +2,10 @@ document.onkeydown = arrowChecker;
 
 function arrowChecker(e) {  
     e = e || window.event;
-    if (e.keyCode == '32') { //space
-        document.location.href = "http://stackoverflow.com/";
+    if (e.keyCode == '40') { //arrow down
+        document.location.href = "http://localhost/scheduleForKids/visualRepresentation.php?page=fast";
     }
-    else if (e.keyCode == '37') { //left
-        document.location.href = "http://stackoverflow.com/";
-    }
-    else if (e.keyCode == '39') { //right
-       document.location.href = "http://google.com/";
+    else if (e.keyCode == '38') { //arrow up
+        document.location.href = "http://localhost/scheduleForKids/visualRepresentation.php?page=slow";
     }
 }
